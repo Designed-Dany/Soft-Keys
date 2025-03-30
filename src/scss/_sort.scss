@@ -1,0 +1,25 @@
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  &__list {
+    display: none;
+    flex-direction: column;
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid white;
+    border-radius: 15px;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    transition: all ease 0.5s;
+  }
+  &__item:hover {
+    background-color: white;
+    color: black;
+    transition: all ease 0.5s;
+  }
+}

@@ -1,0 +1,34 @@
+.search {
+  display: flex;
+  align-items: center;
+  &__item {
+    position: relative;
+  }
+  &__input {
+    max-width: 403px;
+    height: 36px;
+    width: 403px;
+    padding: 6px 0px 6px 13px;
+    border-radius: 15px;
+    border: none;
+    transition: all ease 1s;
+  }
+  &__input:hover {
+    cursor: pointer;
+    box-shadow: 0px -1px 35px rgb(209, 49, 129);
+    transition: all ease 0.5s;
+  }
+  &__block {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 1px solid white;
+    background-color: black;
+    width: 36px;
+    height: 36px;
+    border-radius: 15px;
+  }
+  &__icon {
+    margin-top: 6px;
+  }
+}

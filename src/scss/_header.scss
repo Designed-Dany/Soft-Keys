@@ -1,0 +1,34 @@
+.header {
+  background-color: black;
+  padding: 40px 0px 40px 0px;
+  &__logo {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__icon {
+    cursor: pointer;
+  }
+  h1 {
+    font-weight: 700;
+  }
+  p {
+    font-weight: 500;
+    font-size: 19px;
+    background: linear-gradient(90deg, #d8005d 0%, #fff 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  &__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  &__navigate {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 45px;
+  }
+}
