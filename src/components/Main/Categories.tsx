@@ -1,6 +1,6 @@
 import React from 'react';
 import '/src/scss/_categories.scss';
-const categories = ['Все', "Популярные", "40%", '60%', '65%', '70%', '80%']
+const categories = ['Все', "Популярные", "40%", '60%', '65%', '70%', '80%', '95%']
 
 type CategoriesProps = {
 	value: number;

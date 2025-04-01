@@ -11,7 +11,7 @@ function Header() {
 				<img className='header__icon' width={120} src="/src/assets/logo.svg" alt="keyboard icon" />
 				<div className="header__description">
 					<h1>SOFT KEYS</h1>
-					<p>Самые красивые клавиатуры в мире!</p>
+					<p>Самые красивые клавиатуры в мире <img src="/src/assets/Earth.svg" alt="" /></p>
 				</div>
 				<Search />
 				<div className="header__navigate">

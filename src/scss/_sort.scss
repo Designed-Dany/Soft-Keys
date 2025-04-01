@@ -19,5 +19,15 @@
   }
   &__active {
     text-decoration: underline;
+    cursor: pointer;
+  }
+
+  &__position {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__name {
+    text-decoration: underline;
   }
 }
