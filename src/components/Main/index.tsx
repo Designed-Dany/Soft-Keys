@@ -1,9 +1,11 @@
 import React from "react";
 import Categories from "./Categories";
-import Keyboard from "./Keyboard";
+import Keyboard from './Keyboard';
+import Skeleton from "./skeleton";
 import Sort from "./Sort";
 import "/src/scss/_main.scss";
 function Main() {
+	const [isLoading, setIsLoading] = React.useState(true);
 	const [categoryId, setCategoryId] = React.useState(0);
 	const [sortId, setSortId] = React.useState(0);
 	const onChangeCategory = (id: number) => {
@@ -22,6 +24,7 @@ function Main() {
 			})
 			.then((arr) => {
 				setItems(arr);
+				setIsLoading(false)
 			});
 	}, []);
 
@@ -33,7 +36,7 @@ function Main() {
 			</div>
 			<h3>Все клавиатуры</h3>
 			<div className="position">
-				{items.map((obj: any) => (
+				{isLoading ? [...new Array(6)].map((_, i) => <Skeleton key={i} />) : items.map((obj) => (
 					<Keyboard
 						imageUrl={obj.imageUrl}
 						price={obj.price}
@@ -42,7 +45,8 @@ function Main() {
 						key={obj.id}
 						{...obj}
 					/>
-				))}
+				))
+				}
 			</div>
 		</>
 	);

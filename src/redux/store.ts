@@ -1,10 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
-import filter from './filter/slice';
-
+import keyboard from './keyboard/slice.ts';
 export const store = configureStore({
 	reducer: {
-		filter
+		keyboard
 	},
 })
 
