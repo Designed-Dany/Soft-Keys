@@ -1,0 +1,36 @@
+.form__block {
+  margin-top: 300px;
+}
+
+.form {
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 50px;
+  gap: 20px;
+
+  input {
+    height: 40px;
+    padding: 5px;
+  }
+
+  button {
+    margin-left: 45px;
+    height: 40px;
+    width: 200px;
+  }
+}
+
+.questions-block {
+  margin-top: 10px;
+  button {
+    border: none;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+  }
+  :hover {
+    color: rgb(129, 129, 129);
+  }
+}

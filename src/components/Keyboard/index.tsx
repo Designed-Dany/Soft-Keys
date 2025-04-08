@@ -1,8 +1,9 @@
 import React from 'react'
+import { KeyboardProps } from './type'
 import '/src/scss/_keyboard.scss'
 
+function Keyboard({ title, price, imageUrl, format }: KeyboardProps) {
 
-function Keyboard({ title, price, imageUrl, format }) {
 	return (
 		<div className='keyboard'>
 			<img width={200} src={imageUrl} alt="product icon" />
