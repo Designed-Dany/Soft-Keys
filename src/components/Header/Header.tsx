@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Cart from './Cart'
 import Favorites from './Favorites'
 import Profile from './Profile'
@@ -9,7 +10,9 @@ function Header() {
 		<header className='header'>
 			<div className="container">
 				<div className="header__logo">
-					<img className='header__icon' width={120} src="/src/assets/logo.svg" alt="keyboard icon" />
+					<Link to="/">
+						<img className='header__icon' width={120} src="/src/assets/logo.svg" alt="keyboard icon" />
+					</Link>
 					<div className="header__description">
 						<h1>SOFT KEYS</h1>
 						<p>Самые красивые клавиатуры в мире <img src="/src/assets/Earth.svg" alt="" /></p>
@@ -17,7 +20,7 @@ function Header() {
 					<Search />
 					<div className="header__navigate">
 						<Favorites />
-						<Cart />
+						<Link to="cart"><Cart /></Link>
 						<Profile />
 					</div>
 				</div>

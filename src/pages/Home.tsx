@@ -11,18 +11,25 @@ import '/src/scss/_main.scss';
 function Home() {
 	const [isLoading, setIsLoading] = React.useState(true);
 	const [categoryId, setCategoryId] = React.useState(0);
-	const [sortId, setSortId] = React.useState(0);
+	const [sortId, setSortId] = React.useState({ name: "Популярности", sortProperty: 'rating' });
+
 	const onChangeCategory = (id: number) => {
 		setCategoryId(id);
 	};
 	const onChangeSort = (id: number) => {
 		setSortId(id);
 	};
-
 	const [items, setItems] = React.useState([]);
 
+	const category = categoryId > 0 ? `category=${categoryId}` : ""
+	const sortType = sortId.sortProperty
+
+	const order = sortType.includes('-') ? 'asc' : 'desc';
+	const sortBy = sortType.replace('-', '');
+
+
 	React.useEffect(() => {
-		fetch("https://679f328924322f8329c309b8.mockapi.io/items")
+		fetch(`https://679f328924322f8329c309b8.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}`)
 			.then((res) => {
 				return res.json();
 			})
@@ -30,7 +37,7 @@ function Home() {
 				setItems(arr);
 				setIsLoading(false);
 			});
-	}, []);
+	}, [categoryId, sortBy, order]);
 
 	return (
 		<>
