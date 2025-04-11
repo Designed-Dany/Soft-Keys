@@ -5,6 +5,7 @@ import Favorites from './Favorites'
 import Profile from './Profile'
 import Search from './Search'
 import '/src/scss/_header.scss'
+
 function Header() {
 	return (
 		<header className='header'>

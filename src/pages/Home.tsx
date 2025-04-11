@@ -6,9 +6,12 @@ import { KeyboardProps } from '../components/Keyboard/type';
 import Skeleton from '../components/Skeleton';
 import Sort from '../components/Sort';
 
+import { SearchContext } from '../App';
 import '/src/scss/_main.scss';
 
 function Home() {
+	const [searchValue] = React.useContext(SearchContext);
+
 	const [isLoading, setIsLoading] = React.useState(true);
 	const [categoryId, setCategoryId] = React.useState(0);
 	const [sortId, setSortId] = React.useState({ name: "Популярности", sortProperty: 'rating' });
@@ -16,7 +19,7 @@ function Home() {
 	const onChangeCategory = (id: number) => {
 		setCategoryId(id);
 	};
-	const onChangeSort = (id: number) => {
+	const onChangeSort = (id: any) => {
 		setSortId(id);
 	};
 	const [items, setItems] = React.useState([]);
@@ -26,10 +29,10 @@ function Home() {
 
 	const order = sortType.includes('-') ? 'asc' : 'desc';
 	const sortBy = sortType.replace('-', '');
-
+	const search = searchValue ? `&search=${searchValue}` : ""
 
 	React.useEffect(() => {
-		fetch(`https://679f328924322f8329c309b8.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}`)
+		fetch(`https://679f328924322f8329c309b8.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}${search}`)
 			.then((res) => {
 				return res.json();
 			})
@@ -37,7 +40,7 @@ function Home() {
 				setItems(arr);
 				setIsLoading(false);
 			});
-	}, [categoryId, sortBy, order]);
+	}, [categoryId, sortBy, order, search]);
 
 	return (
 		<>
