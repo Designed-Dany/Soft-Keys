@@ -17,7 +17,7 @@ function Sort({ value, onChangeSort }) {
           {value.name}
         </span>
       </div>
-      <div>
+      <div className="filters__block">
         {open && (
           <ul className="filters__list">
             {filters.map((obj, i) => (

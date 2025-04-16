@@ -1,4 +1,5 @@
 .filters {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,5 +31,11 @@
   &__name {
     text-decoration: underline;
     cursor: pointer;
+  }
+
+  &__block {
+    position: absolute;
+    top: 40px;
+    right: 0;
   }
 }

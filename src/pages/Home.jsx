@@ -1,0 +1,68 @@
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { SearchContext } from "../App";
+import Categories from "../components/Categories";
+import Keyboard from "../components/Keyboard";
+import Skeleton from "../components/Skeleton";
+import Sort from "../components/Sort";
+import { setCategoryId } from "../redux/slices/filterSlice";
+import "/src/scss/_main.scss";
+
+function Home() {
+  const [searchValue] = React.useContext(SearchContext);
+  const categoryId = useSelector((state) => state.filter.categoryId);
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [sortId, setSortId] = React.useState({
+    name: "Популярности",
+    sortProperty: "rating",
+  });
+
+  const dispatch = useDispatch();
+
+  const onChangeCategory = (id) => {
+    dispatch(setCategoryId(id));
+  };
+  const onChangeSort = (id) => {
+    setSortId(id);
+  };
+  const [items, setItems] = React.useState([]);
+
+  const category = categoryId > 0 ? `category=${categoryId}` : "";
+  const sortType = sortId.sortProperty;
+
+  const order = sortType.includes("-") ? "asc" : "desc";
+  const sortBy = sortType.replace("-", "");
+  const search = searchValue ? `&search=${searchValue}` : "";
+
+  React.useEffect(() => {
+    fetch(
+      `https://679f328924322f8329c309b8.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}${search}`
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((arr) => {
+        setItems(arr);
+        setIsLoading(false);
+      });
+  }, [categoryId, sortBy, order, search]);
+
+  return (
+    <>
+      <div className="container">
+        <div className="main">
+          <Categories value={categoryId} onChangeCategory={onChangeCategory} />
+          <Sort value={sortId} onChangeSort={onChangeSort} />
+        </div>
+        <h2>Все клавиатуры</h2>
+        <div className="position">
+          {isLoading
+            ? [...new Array(6)].map((_, i) => <Skeleton key={i} />)
+            : items.map((obj) => <Keyboard {...obj} />)}
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default Home;
