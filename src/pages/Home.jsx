@@ -1,21 +1,17 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SearchContext } from "../App";
 import Categories from "../components/Categories";
 import Keyboard from "../components/Keyboard";
 import Skeleton from "../components/Skeleton";
 import Sort from "../components/Sort";
-import { setCategoryId } from "../redux/slices/filterSlice";
+import { setCategoryId, setSortId } from "../redux/slices/filterSlice";
 import "/src/scss/_main.scss";
 
 function Home() {
-  const [searchValue] = React.useContext(SearchContext);
   const categoryId = useSelector((state) => state.filter.categoryId);
+  const sortId = useSelector((state) => state.filter.sort);
+  const searchValue = useSelector((state) => state.search.searchValue);
   const [isLoading, setIsLoading] = React.useState(true);
-  const [sortId, setSortId] = React.useState({
-    name: "Популярности",
-    sortProperty: "rating",
-  });
 
   const dispatch = useDispatch();
 
@@ -23,8 +19,9 @@ function Home() {
     dispatch(setCategoryId(id));
   };
   const onChangeSort = (id) => {
-    setSortId(id);
+    dispatch(setSortId(id));
   };
+
   const [items, setItems] = React.useState([]);
 
   const category = categoryId > 0 ? `category=${categoryId}` : "";
