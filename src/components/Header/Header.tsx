@@ -1,12 +1,15 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Cart from './Cart'
-import Favorites from './Favorites'
 import Profile from './Profile'
 import Search from './Search'
 import '/src/scss/_header.scss'
 
 function Header() {
+
+	const { items } = useSelector((state) => state.favorites)
+
 	return (
 		<header className='header'>
 			<div className="container">
@@ -20,7 +23,7 @@ function Header() {
 					</div>
 					<Search />
 					<div className="header__navigate">
-						<Favorites />
+						<Link to="favorites"><span className='header__favorites'>{items.length}</span><img width={35} src="/src/assets/favorites.svg" alt="favorites icon" /></Link>
 						<Link to="cart"><Cart /></Link>
 						<Profile />
 					</div>

@@ -22,8 +22,7 @@ function Home() {
     dispatch(setSortId(id));
   };
 
-  const [items, setItems] = React.useState([]);
-
+  const [items, setItems] = React.useState([]); // надо сделать его контекстом и передать в компонент keyboard
   const category = categoryId > 0 ? `category=${categoryId}` : "";
   const sortType = sortId.sortProperty;
 

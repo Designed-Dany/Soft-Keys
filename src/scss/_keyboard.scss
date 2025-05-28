@@ -13,4 +13,25 @@
     border: none;
     cursor: pointer;
   }
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  &__add {
+    cursor: pointer;
+    width: 80px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+  }
+  &__add:hover {
+    background-color: rgb(119, 116, 116);
+  }
+  &__cancel {
+    cursor: pointer;
+  }
+  &__cancel:hover {
+    fill: red;
+  }
 }

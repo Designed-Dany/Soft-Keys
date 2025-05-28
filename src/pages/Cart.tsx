@@ -1,8 +1,13 @@
 import React from 'react'
+import ButtonRoot from '../components/ButtonRoot'
 
 function Cart() {
 	return (
-		<div>Cart</div>
+		<div>
+			Cart
+			<ButtonRoot />
+		</div>
+
 	)
 }
 
