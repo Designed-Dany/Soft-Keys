@@ -11,7 +11,6 @@ import '/src/scss/_main.scss';
 
 function Home() {
 	const [searchValue] = React.useContext(SearchContext);
-
 	const [isLoading, setIsLoading] = React.useState(true);
 	const [categoryId, setCategoryId] = React.useState(0);
 	const [sortId, setSortId] = React.useState({ name: "Популярности", sortProperty: 'rating' });

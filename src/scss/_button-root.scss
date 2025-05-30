@@ -1,0 +1,19 @@
+.button-root {
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  color: white;
+  border: 2px solid rgb(131, 131, 131);
+  border-radius: 10px;
+}
+
+.button-root:hover {
+  background-color: rgb(53, 52, 52);
+}
+
+.button-root:active {
+  background-color: rgb(179, 49, 110);
+}

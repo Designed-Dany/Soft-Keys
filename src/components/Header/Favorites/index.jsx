@@ -8,12 +8,14 @@ function Favorites() {
   const items = useSelector((state) => state.favorites.items);
 
   return (
-    <div className="favorites">
-      {items.map((item) => (
-        <FavoritesItem key={item.id} {...item} />
-      ))}
+    <>
       <ButtonRoot />
-    </div>
+      <div className="favorites">
+        {items.map((item) => (
+          <FavoritesItem key={item.id} {...item} />
+        ))}
+      </div>
+    </>
   );
 }
 
