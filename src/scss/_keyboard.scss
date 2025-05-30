@@ -34,4 +34,12 @@
   &__cancel:hover {
     fill: red;
   }
+  &__icon {
+    border-radius: 15px;
+  }
+
+  &__favorites {
+    background-color: black;
+  }
+
 }
