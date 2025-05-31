@@ -11,7 +11,7 @@ function Favorites() {
     <>
       <ButtonRoot />
       <div className="favorites">
-        {items.map((item) => (
+        {items.length == 0 ? <span className='favorites__empty'>Пока в избранном ничего нет :(</span> : items.map((item) => (
           <FavoritesItem key={item.id} {...item} />
         ))}
       </div>
