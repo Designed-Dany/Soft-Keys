@@ -11,7 +11,7 @@ const FavoritesItem = ({ id, title, price, imageUrl, format }) => {
   return (
     <>
       <div className="keyboard">
-        <img width={200} src={imageUrl} alt="product icon" />
+        <img className='keyboard__icon' width={200} src={imageUrl} alt="product icon" />
         <h3>{title}</h3>
         <h4>{"Размер " + format + "%"}</h4>
         <div className="keyboard__price">
