@@ -7,7 +7,8 @@
   gap: 10px;
   &__price {
     display: flex;
-    gap: 34px;
+    align-items: center;
+    gap: 20px;
   }
   &__favorites {
     border: none;
@@ -24,6 +25,7 @@
     height: 30px;
     border-radius: 10px;
     border: none;
+    padding: 5px;
   }
   &__add:hover {
     background-color: rgb(119, 116, 116);

@@ -9,7 +9,6 @@ import "/src/scss/_keyboard.scss";
 function Keyboard({ id, title, price, imageUrl, format }) {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites.items);
-  const [activeFavorites, setActiveFavorites] = React.useState(false);
   let isFavorite;
 
   const onClickAdd = () => {
@@ -27,10 +26,8 @@ function Keyboard({ id, title, price, imageUrl, format }) {
 
     if (isFavorite) {
       dispatch(removeFavorites(items.id));
-      setActiveFavorites(false);
     } else {
       dispatch(addFavorites(items));
-      setActiveFavorites(true);
     }
   };
 
@@ -46,9 +43,8 @@ function Keyboard({ id, title, price, imageUrl, format }) {
       <h4>{"Размер " + format + "%"}</h4>
       <div className="keyboard__price">
         <p>Цена: {price}$</p>
-        <button>Добавить</button>
-      </div>
-      <button className="keyboard__favorites" disabled={isFavorite}>
+        <button className='keyboard__add'>Добавить</button>
+        <button className="keyboard__favorites" disabled={isFavorite}>
         <svg
           onClick={onClickAdd}
           xmlns="http://www.w3.org/2000/svg"
@@ -63,6 +59,7 @@ function Keyboard({ id, title, price, imageUrl, format }) {
           />
         </svg>
       </button>
+      </div>
     </div>
   );
 }
