@@ -4,21 +4,22 @@ import {
   addFavorites,
   removeFavorites,
 } from "../../redux/slices/favoriteSlice";
+import { addItem } from "../../redux/slices/cartSlice";
 import "/src/scss/_keyboard.scss";
 
 function Keyboard({ id, title, price, imageUrl, format }) {
   const dispatch = useDispatch();
-  const favorites = useSelector((state) => state.favorites.items); // массив добавленных товаров в избранное
-  const active = useSelector((state) => state.favorites.active);
+  const arrProducts = useSelector((state) => state.favorites.items); // массив добавленных товаров в избранное
+  const active = useSelector((state) => state.favorites.active); // изначальное состояние кнопки избранное
   const [isActive, setIsActive] = React.useState(active); // состояние кнопки избранное
 
-  const isFavorite = favorites.some((item) => item.id === id);
+  const isFavorite = arrProducts.some((item) => item.id === id);
 
   useEffect(() => {
     setIsActive(isFavorite);
-  }, [favorites, id]);
+  }, [arrProducts, id]);
 
-  const onClickAdd = () => {
+  const onClickAddFavorites = () => {
     const items = {
       id,
       title,
@@ -34,6 +35,18 @@ function Keyboard({ id, title, price, imageUrl, format }) {
     }
   };
 
+  const onClickAddItem = () => {
+    const items = {
+      id,
+      title,
+      price,
+      imageUrl,
+      format,
+    };
+
+    dispatch(addItem(items));
+  };
+
   return (
     <div className="keyboard">
       <img
@@ -46,10 +59,12 @@ function Keyboard({ id, title, price, imageUrl, format }) {
       <h4>{"Размер " + format + "%"}</h4>
       <div className="keyboard__price">
         <p>Цена: {price}$</p>
-        <button className="keyboard__add">Добавить</button>
+        <button onClick={onClickAddItem} className="keyboard__add">
+          Добавить
+        </button>
         <button className="keyboard__favorites" disabled={active}>
           <svg
-            onClick={onClickAdd}
+            onClick={onClickAddFavorites}
             xmlns="http://www.w3.org/2000/svg"
             width="28"
             height="24"

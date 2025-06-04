@@ -9,18 +9,18 @@ const cartSlice = createSlice({
 	name: 'cart',
 	initialState,
 	reducers: {
-		addFavorites(state, action) {
+		addItem(state, action) {
 			state.items.push(action.payload)
 		},
-		removeFavorites(state, action) {
+		removeItem(state, action) {
 			state.items = state.items.filter(obj => obj.id !== action.payload)
 		},
-		clearFavorites(state) {
+		clearItem(state) {
 			state.items = []
 		}
 	}
 })
 
-// export const {  } = cartSlice.actions;
+export const { addItem, removeItem, clearItem } = cartSlice.actions;
 
 export default cartSlice.reducer;
