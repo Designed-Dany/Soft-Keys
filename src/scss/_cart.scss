@@ -1,0 +1,44 @@
+.cart {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 200px;
+  &__empty {
+    margin: 0 auto;
+    margin-top: 250px;
+    font-size: 30px;
+  }
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-bottom: 60px;
+  }
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+  &__trash {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    width: 250px;
+    height: 30px;
+    color: white;
+    background-color: black;
+    border: none;
+    font-size: 20px;
+  }
+  &__trash:hover {
+    color: rgb(131, 127, 127);
+  }
+  &__footer {
+    display: flex;
+    margin-top: 50px;
+    font-size: 20px;
+    justify-content: center;
+    gap: 280px;
+  }
+}

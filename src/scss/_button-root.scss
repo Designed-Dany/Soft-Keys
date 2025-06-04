@@ -1,6 +1,7 @@
 .button-root {
   cursor: pointer;
-  width: 100px;
+  width: 110px;
+  padding: 5px;
   height: 40px;
   background-color: black;
   display: flex;
@@ -8,6 +9,12 @@
   color: white;
   border: 2px solid rgb(131, 131, 131);
   border-radius: 10px;
+  &__icon {
+    margin-top: 10px;
+  }
+  &__description {
+    display: flex;
+  }
 }
 
 .button-root:hover {
@@ -15,5 +22,5 @@
 }
 
 .button-root:active {
-  background-color: rgb(179, 49, 110);
+  background-color: rgb(196, 194, 195);
 }

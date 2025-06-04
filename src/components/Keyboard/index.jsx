@@ -4,7 +4,7 @@ import {
   addFavorites,
   removeFavorites,
 } from "../../redux/slices/favoriteSlice";
-import { addItem } from "../../redux/slices/cartSlice";
+import { addItem, removeItem, clearItem } from "../../redux/slices/cartSlice";
 import "/src/scss/_keyboard.scss";
 
 function Keyboard({ id, title, price, imageUrl, format }) {
@@ -35,7 +35,7 @@ function Keyboard({ id, title, price, imageUrl, format }) {
     }
   };
 
-  const onClickAddItem = () => {
+  const onClickAddProduct = () => {
     const items = {
       id,
       title,
@@ -59,7 +59,7 @@ function Keyboard({ id, title, price, imageUrl, format }) {
       <h4>{"Размер " + format + "%"}</h4>
       <div className="keyboard__price">
         <p>Цена: {price}$</p>
-        <button onClick={onClickAddItem} className="keyboard__add">
+        <button onClick={onClickAddProduct} className="keyboard__add">
           Добавить
         </button>
         <button className="keyboard__favorites" disabled={active}>
