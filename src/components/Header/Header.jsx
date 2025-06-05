@@ -6,7 +6,8 @@ import "/src/scss/_header.scss";
 
 function Header() {
   const { items } = useSelector((state) => state.favorites);
-
+  const { products } = useSelector((state) => state.cart);
+  
   return (
     <header className="header">
       <div className="container">
@@ -29,17 +30,23 @@ function Header() {
           <Search />
           <div className="header__navigate">
             <Link to="favorites">
-              <span className="header__favorites">{items.length}</span>
+            <div className='header__favorites-count'>
+              
+              {items.length == 0 ? '' : <span className="header__favorites">{items.length}</span>}
               <img
                 width={35}
                 src="/src/assets/favorites.svg"
                 alt="favorites icon"
               />
+            </div>
             </Link>
             <Link to="cart">
-              <img width={35} src="/src/assets/cart.svg" alt="" />
+            <div className='header__cart'>
+              {products.length == 0 ? '' : <span className='header__cart-count'>{products.length}</span>}
+              <img width={35} src="/src/assets/cart.svg" alt="cart-icon" />
+            </div>
             </Link>
-            <img width={28} src="/src/assets/profile.svg" alt="profile icon" />
+            <img width={28} src="/src/assets/profile.svg" alt="profile-icon"/>
           </div>
         </div>
       </div>

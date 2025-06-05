@@ -13,7 +13,6 @@ import "/src/scss/libs/_normalize.scss";
 export const SearchContext = React.createContext();
 
 function App() {
-  const [isLogin, setIsLogin] = React.useState(true);
   const [searchValue, setSearchValue] = React.useState("");
   return (
     <>

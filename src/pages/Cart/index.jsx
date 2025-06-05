@@ -7,15 +7,15 @@ import { useSelector } from "react-redux";
 import "/src/scss/_cart.scss";
 
 function Cart() {
-  const items = useSelector((state) => state.cart.items);
-
+  const {products} = useSelector((state) => state.cart);
+  const {totalPrice} = useSelector((state) => state.cart)
   return (
     <>
       <ButtonRoot />
 
       <div className="cart">
         <div>
-          {items.length == 0 ? (
+          {products.length == 0 ? (
             <div>
               <span className="cart__empty">Корзина пуста</span>
             </div>
@@ -28,13 +28,13 @@ function Cart() {
                 </button>
               </div>
               <div className="cart__items">
-                {items.map((item) => (
+                {products.map((item) => (
                   <CartItem key={item.id} {...item} />
                 ))}
               </div>
               <div className="cart__footer">
-                <span>Всего товаров: {items.length}</span>
-                <span>Сумма заказа: 1999$</span>
+                <span>Всего товаров: {products.length}</span>
+                <span>Сумма заказа: {totalPrice}$</span>
               </div>
             </div>
           )}
