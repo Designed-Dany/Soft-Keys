@@ -7,8 +7,7 @@ import { clearItem } from "../../redux/slices/cartSlice";
 import "/src/scss/_cart.scss";
 
 function Cart() {
-  const { products, totalPrice, count } = useSelector((state) => state.cart);
-
+  const { products, totalPrice, count} = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   const clearAllCart = () => {
@@ -18,7 +17,6 @@ function Cart() {
   return (
     <>
       <ButtonRoot />
-
       <div className="cart">
         <div>
           {products.length == 0 ? (

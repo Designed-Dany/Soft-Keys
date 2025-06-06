@@ -54,7 +54,7 @@ function Home() {
         <div className="position">
           {isLoading
             ? [...new Array(6)].map((_, i) => <Skeleton key={i} />)
-            : items.map((obj) => <Keyboard {...obj} />)}
+            : items.map((obj, i) => <Keyboard key={i} {...obj} />)}
         </div>
       </div>
     </>

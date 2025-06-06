@@ -4,10 +4,10 @@ import {
   addFavorites,
   removeFavorites,
 } from "../../redux/slices/favoriteSlice";
-import { addItem, removeItem, clearItem } from "../../redux/slices/cartSlice";
+import { addItem} from "../../redux/slices/cartSlice";
 import "/src/scss/_keyboard.scss";
 
-function Keyboard({ id, title, price, imageUrl, format }) {
+function Keyboard({ id, title, price, imageUrl, format, count }) {
   const dispatch = useDispatch();
   const arrProducts = useSelector((state) => state.favorites.items); // массив добавленных товаров в избранное
   const active = useSelector((state) => state.favorites.active); // изначальное состояние кнопки избранное
@@ -42,6 +42,7 @@ function Keyboard({ id, title, price, imageUrl, format }) {
       price,
       imageUrl,
       format,
+      count
     };
 
     dispatch(addItem(items));
