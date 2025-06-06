@@ -1,10 +1,11 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeItem } from "../../redux/slices/cartSlice";
 import "/src/scss/_keyboard-cart.scss";
 
 function CartItem({ id, imageUrl, title, price, format }) {
   const dispatch = useDispatch();
+  const { count } = useSelector((state) => state.cart);
 
   const deleteItem = () => {
     dispatch(removeItem(id));
@@ -24,9 +25,9 @@ function CartItem({ id, imageUrl, title, price, format }) {
           <h4>{"Размер " + format + "%"}</h4>
         </div>
         <div className="keyboard-cart__count">
-          <button>+</button>
-          <span>0</span>
           <button>-</button>
+          <span>{count}</span>
+          <button>+</button>
         </div>
         <div className="keyboard-cart__buttons">
           <p>{price}$</p>
