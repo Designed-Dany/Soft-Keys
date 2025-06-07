@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch} from "react-redux";
-import { removeItem, removeCount, addCount } from "../../redux/slices/cartSlice";
+import { removeItem, plusCount, minusCount } from "../../redux/slices/cartSlice";
 import "/src/scss/_keyboard-cart.scss";
 
 function CartItem({ id, imageUrl, title, price, format, count}) {
@@ -10,12 +10,12 @@ function CartItem({ id, imageUrl, title, price, format, count}) {
     dispatch(removeItem(id));
   };
   
-  const minusCount = () => {
-    dispatch(removeCount(id))
+  const minusCounts = () => {
+    dispatch(minusCount(id))
   }
 
-  const plusCount = () => {
-    dispatch(addCount(id))
+  const plusCounts = () => {
+    dispatch(plusCount(id))
   }
 
   return (
@@ -32,9 +32,9 @@ function CartItem({ id, imageUrl, title, price, format, count}) {
           <h4>{"Размер " + format + "%"}</h4>
         </div>
         <div className="keyboard-cart__count">
-          <button onClick={minusCount}>-</button>
+          <button onClick={minusCounts}>-</button>
           <span>{count}</span>
-          <button onClick={plusCount}>+</button>
+          <button onClick={plusCounts}>+</button>
         </div>
         <div className="keyboard-cart__buttons">
           <p>{price}$</p>
