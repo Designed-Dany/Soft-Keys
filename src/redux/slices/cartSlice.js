@@ -11,6 +11,7 @@ const cartSlice = createSlice({
 	initialState,
 	reducers: {
 		addItem(state, action) {
+			
 			const findItem = state.products.find((obj) => obj.id === action.payload.id)
 			if (findItem) {
 				findItem.count++;
@@ -20,13 +21,18 @@ const cartSlice = createSlice({
 					count: 1,
 				});
 			}
+
       // Обновляем общую стоимость
     state.totalPrice = state.products.reduce((sum, obj) => {
       return (obj.price * obj.count) + sum;
     }, 0);	
 		},
-		removeItem(state, action) {
-			state.products = state.products.filter(obj => obj.id !== action.payload)
+		removeItem(state, action) {	
+
+			if (confirm('Вы уверены что хотите удалить товар?')) {
+				state.products = state.products.filter(obj => obj.id !== action.payload)
+			}
+
 			state.totalPrice = state.products.reduce((sum, obj) => {
         return (obj.price * obj.count) + sum;
       }, 0);	
@@ -39,7 +45,11 @@ const cartSlice = createSlice({
 			}
 
 			if (findItem.count == 0) {
-				state.products = state.products.filter(obj => obj.id !== action.payload)
+				if(confirm('Вы точно хотите удалить товар?')) {
+					state.products = state.products.filter(obj => obj.id !== action.payload)
+				} else {
+					return ''
+				}
 			}	
 			
 			state.totalPrice = state.products.reduce((sum, obj) => {
@@ -58,9 +68,14 @@ const cartSlice = createSlice({
       }, 0);
 		},
 		clearItem(state) {
-			state.products = []
-			state.products.count = 0;
-			state.totalPrice = 0;
+			if (confirm("Вы хотите удалить все товары из корзины?")) {
+				state.products = []
+				state.products.count = 0;
+				state.totalPrice = 0;
+			} else {
+				return;
+			}
+			
 		}
 	}
 })

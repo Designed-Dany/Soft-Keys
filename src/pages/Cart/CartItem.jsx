@@ -37,7 +37,7 @@ function CartItem({ id, imageUrl, title, price, format, count}) {
           <button onClick={plusCounts}>+</button>
         </div>
         <div className="keyboard-cart__buttons">
-          <p>{price}$</p>
+          <p>{price * count}$</p>
           <button onClick={deleteItem} className="keyboard-cart__cancel">
             &#10006;
           </button>

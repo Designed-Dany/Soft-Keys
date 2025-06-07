@@ -44,7 +44,7 @@ function Keyboard({ id, title, price, imageUrl, format, count }) {
       format,
       count
     };
-
+    
     dispatch(addItem(items));
   };
 
