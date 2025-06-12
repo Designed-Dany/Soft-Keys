@@ -1,4 +1,7 @@
+import React from 'react';
+
 function Form() {
+
 	return (
 		<>
 		<div className='Form'>
@@ -6,7 +9,6 @@ function Form() {
 				<input type="password" />
 				<input type="email" />
 			</form>
-
 		</div>
 		</>
 	)

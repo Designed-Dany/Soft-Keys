@@ -1,12 +1,25 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { addItem } from '../../../redux/slices/cartSlice';
 import { removeFavorites } from "../../../redux/slices/favoriteSlice";
-const FavoritesItem = ({ id, title, price, imageUrl, format }) => {
+const FavoritesItem = ({ id, title, price, imageUrl, format, }) => {
   const dispatch = useDispatch();
 
   const deleteFavorites = () => {
     dispatch(removeFavorites(id));
   };
+
+  const onClickAddProduct = () => {
+      const items = {
+        id,
+        title,
+        price,
+        imageUrl,
+        format,
+      };
+      
+      dispatch(addItem(items));
+    };
 
   return (
     <>
@@ -17,7 +30,7 @@ const FavoritesItem = ({ id, title, price, imageUrl, format }) => {
         <div className="keyboard__price">
           <p>Цена: {price}$</p>
           <div className="keyboard__buttons">
-            <button className="keyboard__add">Добавить</button>
+            <button onClick={onClickAddProduct} className="keyboard__add">Добавить</button>
             <svg
               onClick={deleteFavorites}
               xmlns="http://www.w3.org/2000/svg"

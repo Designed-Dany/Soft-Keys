@@ -35,7 +35,7 @@ function Keyboard({ id, title, price, imageUrl, format, count }) {
     }
   };
 
-  const onClickAddProduct = () => {
+   const onClickAddProduct = () => {
     const items = {
       id,
       title,
