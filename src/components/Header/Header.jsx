@@ -2,11 +2,14 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Search from "./Search";
+import { useDispatch } from 'react-redux';
+import { removeUser } from '../../redux/slices/userSlice';
 import "/src/scss/_header.scss";
 
 function Header() {
   const { items } = useSelector((state) => state.favorites);
   const { products } = useSelector((state) => state.cart);
+  const dispatch = useDispatch()
   
   return (
     <header className="header">
@@ -46,7 +49,7 @@ function Header() {
               <img width={35} src="/src/assets/cart.svg" alt="cart-icon" />
             </div>
             </Link>
-            <img width={28} src="/src/assets/profile.svg" alt="profile-icon"/>
+              <Link to="/"><button className='header__logout' onClick={() => dispatch(removeUser())}>Выйти из аккаунта</button></Link>
           </div>
         </div>
       </div>

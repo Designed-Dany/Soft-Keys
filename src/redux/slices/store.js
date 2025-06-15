@@ -14,12 +14,15 @@ import favorites from './favoriteSlice';
 import filter from './filterSlice';
 import search from './searchSlice';
 import cart from './cartSlice'
+import user from './userSlice'
+
 
 const rootReducer = combineReducers({
 	filter, 
   search, 
   favorites, 
   cart,
+  user,
 })
 
 const persistConfig = {

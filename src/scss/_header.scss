@@ -58,4 +58,18 @@
   &__favorites-count {
     position: relative;
   }
+
+  &__logout {
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+  }
+
+  &__logout:hover {
+    background-color: rgb(138, 133, 133);
+  } 
 }

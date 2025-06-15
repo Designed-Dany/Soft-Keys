@@ -1,0 +1,12 @@
+.form-page {
+	margin-top: 200px;
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+	&__link {
+		text-decoration: underline;
+	}
+	&__link:hover {
+		color: rgb(139, 173, 202);
+	}
+}

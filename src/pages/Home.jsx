@@ -1,13 +1,17 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Navigate } from 'react-router-dom';
 import Categories from "../components/Categories";
 import Keyboard from "../components/Keyboard";
 import Skeleton from "../components/Skeleton";
 import Sort from "../components/Sort";
+
+import {useAuth} from '../hooks/use-auth'
 import { setCategoryId, setSortId } from "../redux/slices/filterSlice";
 import "/src/scss/_main.scss";
 
 function Home() {
+  const {isAuth} = useAuth()
   const categoryId = useSelector((state) => state.filter.categoryId);
   const sortId = useSelector((state) => state.filter.sort);
   const searchValue = useSelector((state) => state.search.searchValue);
@@ -45,7 +49,7 @@ function Home() {
 
   return (
     <>
-      <div className="container">
+    {isAuth ? <div className="container">
         <div className="main">
           <Categories value={categoryId} onChangeCategory={onChangeCategory} />
           <Sort value={sortId} onChangeSort={onChangeSort} />
@@ -56,7 +60,8 @@ function Home() {
             ? [...new Array(6)].map((_, i) => <Skeleton key={i} />)
             : items.map((obj, i) => <Keyboard key={i} {...obj} />)}
         </div>
-      </div>
+      </div> : <Navigate to="/login"/>}
+      
     </>
   );
 }

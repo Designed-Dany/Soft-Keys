@@ -7,30 +7,36 @@ import Header from "./components/Header/Header";
 import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
-import Form from './components/Form';
 
 import "/src/scss/libs/_normalize.scss";
-
+import LoginPage from './pages/loginPage'
+import RegisterPage from './pages/registerPage'
+import { useLocation } from 'react-router';
 export const SearchContext = React.createContext();
-
 
 function App() {
   const [searchValue, setSearchValue] = React.useState("");
+
+  const location = useLocation();
+  const hideHeaderPaths = ['/login', '/register']; // добавляем эти страницы в исключение, чтобы не отображался header
   return (
     <>
-    {Form && <div className="container">
+      <div className="container">
         <div>
           <SearchContext.Provider value={[searchValue, setSearchValue]}>
-            <Header />
+            {!hideHeaderPaths.includes(location.pathname) && <Header /> }
+             {/* если в url лежат /login, или /register тогда не показывай <Header/> иначе отображай  */}
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="*" element={<NotFound />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/favorites" element={<Favorites />} />
+              <Route path="/" element={<Home/>}/>
+              <Route path="/login" element={<LoginPage/>}/>
+              <Route path="/register" element={<RegisterPage/>}/>
+              <Route path="*" element={<NotFound/>} />
+              <Route path="/cart" element={<Cart/>} />
+              <Route path="/favorites" element={<Favorites />}/>
             </Routes>
           </SearchContext.Provider>
         </div>
-      </div>}
+      </div>
     </>
   );
 }

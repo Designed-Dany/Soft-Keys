@@ -7,6 +7,8 @@ import "../index.css";
 import App from "./App.jsx";
 import { store, persistor } from "./redux/slices/store.js";
 import "/src/scss/libs/_normalize.scss";
+import './firebase.js'
+
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
